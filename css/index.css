@@ -1,63 +1,287 @@
-html{
-  scroll-behavior: smooth;
+/* ==========================================
+   1. VARIÁVEIS E RESET GLOBAL
+   ========================================== */
+:root {
+  /* Cores principais */
+  --bg-color: #0f172a;        /* Fundo escuro moderno (Tom Slate) */
+  --card-bg: #1e293b;         /* Fundo levemente destacado para as tags */
+  --text-main: #f8fafc;       /* Texto principal (Branco suave) */
+  --text-muted: #94a3b8;      /* Texto secundário (Cinza) */
+  --accent: #10b981;          /* Verde esmeralda (Cor de destaque minimalista) */
+  --border-color: #334155;    /* Bordas sutis */
+
+  /* Fontes importadas do seu HTML */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  border: solid 5px black;
-   color: white; 
-   background-image: linear-gradient(45deg,blue,rgb(18, 196, 187),rgb(32, 81, 124));
-   font-family: Arial, Helvetica, sans-serif;
-   padding: 0px 50px;
-    }
- ul{
-   display: flex;
-   justify-content: space-between;
-   list-style-type: none;
-   align-items: center;
-   padding: 16px;
- }
-
-a {
-    color: rgb(0, 0, 0);
-    text-decoration: none; 
-}
- 
-img {
- width: 150px;
- height: 150px;
- border-radius: 50%;
- border: none;
- 
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  max-width: 680px;            /* Mantém a leitura confortável e centralizada */
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  -webkit-font-smoothing: antialiased;
 }
 
-.center {
-  text-align: center;  
-  border: 1px green;
-} 
-
-footer img {
-  width: 50px;
-  height: 50px;
-  border: none;
+/* ==========================================
+   2. NAVEGAÇÃO (HEADER)
+   ========================================== */
+header nav {
+  margin-bottom: 3.5rem;
 }
 
-  footer {
+header nav ul {
+  list-style: none;
   display: flex;
-  justify-content: center;
-  
-  
+  gap: 1.8rem;
+  justify-content: flex-end;    /* Alinha o menu à direita */
 }
-   footer a {
-    margin: 7px;
-    margin-top: 7px;
-    text-align: center;
- }
- 
- nav a:hover { 
- color: green;
- border: white;
- 
-   }
-   p:hover{
- border: 1px green;
-   }
-  
+
+header nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+header nav a:hover {
+  color: var(--accent);
+}
+
+/* ==========================================
+   3. HERO / CABEÇALHO DO PERFIL
+   ========================================== */
+.hero {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.avatar {
+  margin-bottom: 1.2rem;
+}
+
+.avatar img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15); /* Sombra bem sutil */
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.hero h2 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.location {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* ==========================================
+   4. CONTEÚDO PRINCIPAL (SEÇÕES)
+   ========================================== */
+main section {
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+main p {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+main p strong {
+  color: var(--text-main);      /* Destaca as tecnologias em branco */
+  font-weight: 600;
+}
+
+main a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+main a:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================
+   5. TAGS DE CONHECIMENTO & FERRAMENTAS
+   ========================================== */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;             /* Quebra para a próxima linha se não couber */
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.tags li {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.2s ease;
+}
+
+.tags li:hover {
+  border-color: var(--accent);
+}
+
+/* ==========================================
+   6. RODAPÉ (FOOTER)
+   ========================================== */
+footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+footer a img {
+  width: 18px;
+  height: 18px;
+  /* Aplica filtro para que ícones pretos fiquem em tom claro combinando com o tema dark */
+  filter: brightness(0) invert(0.8);
+  transition: filter 0.2s ease;
+}
+
+footer a:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.footer-note {
+  width: 100%;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-top: 0.5rem;
+}
+/* ==========================================
+   2. NAVEGAÇÃO (HEADER) - AGORA CENTRALIZADO
+   ========================================== */
+header nav {
+  margin-bottom: 3.5rem;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+  justify-content: center;    /* Centraliza os links com a foto */
+}
+
+header nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+header nav a:hover {
+  color: var(--accent);
+}
+/* ==========================================
+   6. RODAPÉ (FOOTER) - AGORA CENTRALIZADO
+   ========================================== */
+footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* Centraliza os links do GitHub e LinkedIn */
+  align-items: center;
+  gap: 1.8rem;
+  text-align: center;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+footer a img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(0.8);
+  transition: filter 0.2s ease;
+}
+
+footer a:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.footer-note {
+  width: 100%;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-top: 0.5rem;
+  text-align: center;         /* Centraliza o texto explicativo */
+}
+
